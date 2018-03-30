@@ -6,7 +6,7 @@ $(document).ready(function(){
 //Create the map variable
 var map = L.map('my-map', {
     scrollWheelZoom: false
-}).setView([31.512996, -99.217529], 6);
+}).setView([31.512996, -99.217529], 5);
 
 //Add the basemap
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
