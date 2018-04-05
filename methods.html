@@ -25,25 +25,25 @@
     </button>
     <h3><a style='font-size: 30px' id='header' class="navbar-brand" href='index.html'>Analyzing Traffic Stop Discrimination in Texas</a></h3>
   <!-- MODALS - INFO BOXES -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="background.html">Background</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="conclusions.html">Legal and Ethical Implications</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="methods.html">Methods and Data</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#creditsModal">About this Project</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="background.html">Background</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="conclusions.html">Legal and Ethical Implications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="methods.html">Methods and Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#creditsModal">About this Project</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <div id="body">
@@ -51,36 +51,44 @@
   <div class="row">
     <div class="col-xs-6 col-md-12">
       <ul id='tabs' class="nav nav-tabs nav-justified">
-      <li style='vertical-align: middle; min-height: 40px' class="nav-item">
-          <a style='vertical-align: middle; min-height: 40px' class="nav-link active" data-toggle="tab" href="#benchmark" role="tab">Benchmark Test</a>
-      </li>
-      <li style='vertical-align: middle; min-height: 40px' class="nav-item">
-          <a style='vertical-align: middle; min-height: 40px' class="nav-link" data-toggle="tab" href="#outcome" role="tab">Outcome Test</a>
-      </li>
-      <li style='vertical-align: middle; min-height: 40px' class="nav-item">
-          <a style='vertical-align: middle; min-height: 40px' class="nav-link" data-toggle="tab" href="#threshold" role="tab">Threshold Test</a>
-      </li>
-      <li style='vertical-align: middle; min-height: 40px' class="nav-item">
-          <a style='vertical-align: middle; min-height: 40px' class="nav-link" data-toggle="tab" href="#VoD" role="tab">Veil of Darkness Test</a>
-      </li>
+        <li style='vertical-align: middle; min-height: 40px' class="nav-item">
+            <a style='vertical-align: middle; min-height: 40px' class="nav-link active" data-toggle="tab" href="#benchmark" role="tab">Benchmark Test</a>
+        </li>
+        <li style='vertical-align: middle; min-height: 40px' class="nav-item">
+            <a style='vertical-align: middle; min-height: 40px' class="nav-link" data-toggle="tab" href="#outcome" role="tab">Outcome Test</a>
+        </li>
+        <li style='vertical-align: middle; min-height: 40px' class="nav-item">
+            <a style='vertical-align: middle; min-height: 40px' class="nav-link" data-toggle="tab" href="#threshold" role="tab">Threshold Test</a>
+        </li>
+        <li style='vertical-align: middle; min-height: 40px' class="nav-item">
+            <a style='vertical-align: middle; min-height: 40px' class="nav-link" data-toggle="tab" href="#VoD" role="tab">Veil of Darkness Test</a>
+        </li>
+        <li style='vertical-align: middle; min-height: 40px' class="nav-item">
+            <a style='vertical-align: middle; min-height: 40px' class="nav-link" data-toggle="tab" href="#data" role="tab">Data Sources</a>
+        </li>
     </ul>
     <!-- CONTENT FOR TABS -->
     <div class="tab-content">
-      <div class="tab-pane fade in show active" id="benchmark" role="tabpanel" onclick= "updateMap()">
-        CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: Benchmark
+      <div class="tab-pane fade in show active" id="benchmark" role="tabpanel" onclick="updateMap()">
+        Overview of Method Benchmark
       </div>
       <div class="tab-pane" id="outcome" role="tabpanel" onclick="updateMap()">
-        CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: Outcome
+        Overview of Method Outcome
       </div>
       <div class="tab-pane" id="threshold" role="tabpanel" onclick="updateMap()">
-        CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: Threshold
+        Overview of Method Threshold
       </div>
       <div class="tab-pane" id="VoD" role="tabpanel" onclick="updateMap()">
-        CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: VoD
+        Overview of Method VoD
+      </div>
+      <div class="tab-pane" id="data" role="tabpanel" onclick="updateMap()">
+        <a class='data_list' href='https://openpolicing.stanford.edu/data/'>Open Policing Data</a>
+        Description of open policing data, shapefiles, twilight hours etc
       </div>
     </div>
-    </div>
   </div>
+  </div>
+</div>
 
   <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -90,16 +98,6 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <div class='datasets'>
-            <h4 id='box_top'>
-              <a id='box_top_1' class='data_list' href='https://openpolicing.stanford.edu/data/'> <div class='subhead'>Open Policing Data</div></a>
-            </h4>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
         </div>
       </div>
     </div>
