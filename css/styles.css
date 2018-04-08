@@ -4,6 +4,8 @@ body {
     background: white;
 }
 
+circle {fill:orange;stroke:orange;fill-opacity:0.5;}
+
 #my-map{
     margin-top: 0;
     margin-left: 0;
