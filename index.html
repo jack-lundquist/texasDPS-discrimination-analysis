@@ -67,24 +67,91 @@
       </ul>
       <!-- CONTENT FOR TABS -->
       <div class="tab-content">
-        <div class="tab-pane fade in show active" id="benchmark" role="tabpanel" onclick= "updateMap()">
-          CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: Benchmark
+        <div class="tab-pane fade in show active" id="benchmark" role="tabpanel" >
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
+                <div id='outcomeCharts'></div>
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
+                <div id='my-map' style='height:500px;'></div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%;">
+                Brief test description
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%">
+                Insights
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane" id="outcome" role="tabpanel" onclick="updateMap()">
-          CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: Outcome
-          <div id='outcomeCharts'></div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
+                <div id='outcomeCharts'></div>
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
+                <div id='my-map1' style='height:500px;'></div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%;">
+                Brief test description
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%">
+                Insights
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane" id="threshold" role="tabpanel" onclick="updateMap()">
-          CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: Threshold
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
+                <div id='outcomeCharts'></div>
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
+                <div id='my-map2' style='height:500px;'></div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%;">
+                Brief test description
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%">
+                Insights
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane" id="VoD" role="tabpanel" onclick="updateMap()">
-          CHARTS, BRIEF TEST DESCRIPTION AND INSIGHTS: VoD
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
+                <div id='outcomeCharts'></div>
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
+                <div id='my-map3' style='height:500px;'></div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class="col-md-6 col-lg-5" style="padding:0; width:100%;">
+                Brief test description
+              </div>
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%">
+                Insights
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       </div>
     </div>
   </div>
-  
+
 
   <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -120,6 +187,37 @@
         </div>
         <div class="modal-body">
           TO BE WRITTEN</a>.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal show" id="useModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div style='min-width: 75%' class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 style="text-align: center" class="modal-title" id="exampleModalLongTitle">Introduction</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <h4 id='box_top' style='text-align: center; font-weight:bold'>
+              Header
+            </h4>
+            <p>
+              Text...
+            </p>
+            <h4 style='text-align: center; font-weight:bold'>
+              Header
+            </h4>
+
+            <p>Text....
+            </p>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
