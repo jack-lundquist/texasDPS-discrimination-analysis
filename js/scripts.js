@@ -4,7 +4,7 @@
 // });
 
 //Popup intro modal on load
-$('#useModal').modal('show');
+// $('#useModal').modal('show');
 
 //Create the map variable
 var map = L.map('my-map', {

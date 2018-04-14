@@ -31,16 +31,16 @@
         <a class="nav-link" href="index.html">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="background.html">Background</a>
+        <a class="nav-link" href="#intro">Background</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="conclusions.html">Legal and Ethical Implications</a>
+        <a class="nav-link" href="#analysis">Analysis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href='#discussion'>Discussion</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="methods.html">Methods and Data</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#creditsModal">About this Project</a>
       </li>
     </ul>
   </div>
@@ -49,6 +49,42 @@
   <div id="body">
   <!-- FIRST ROW: ~1/3 Feature Selection, 2/3 Map -->
   <div class='container-fluid'>
+    <div class="row">
+      <div class="col-xs-6 col-md-12">
+        <br>
+        <h2 style='text-align:center'>Are Traffic Stops in Texas Racially Discriminatory?</h2>
+        <h4 style='text-align:center'>A statistical analysis</h4>
+        This report was created in the Spring of 2018 by Prince Abunku, Te Du,
+        Jon Kastelan and Jack Lundquist for "Data and Algorithms in the Criminal
+        Justice System," a course taught by Ravi Shroff at NYU's Center for Urban
+         Science + Progress. Special thanks to Sam Corbett-Davies and the Stanford
+         Open Policing Project for their support. <br><br>
+         <h3 id='intro'>Introduction</h3>
+         In September 2016, the Austin American Statesman, a prominent daily newspaper in the state of Texas, released several reports documenting what they allege to be racial disparities in the Texas Department of Safety’s (DPS) stops and searches. Their primary statistical findings, which form an important piece of the article’s allegation of racially disparate treatment, were:
+        <li>35 percent of the 1,138 troopers included in the [Austin American Statesman] analysis searched black and Hispanic motorists at least twice as often as white drivers.</li>
+        <li>231 of the officers who searched black and Hispanic motorists at two times or more the rate at which they searched white drivers were less likely to find contraband while searching the minority drivers.</li>
+        <li>65 DPS officers searched minority drivers at least three times more often than the white motorists they stopped yet found contraband less often.</li>
+        <li>16 officers searched minority motorists more than four times as often as Anglos, with lower contraband hit rates.</li>
+        They also included this chart. (INSERT CHART)
+
+        <br><br>These results are somewhat confusing to interpret, both because of how they were communicated as well as because of the content contained within. Should all racial groups be searched at the same rates, or should searches be made based on a perception of risk that race could factor into? Is 35% of officers an indicator of systematic disparate treatment by the DPS on the basis of race? How about the 231 officers (or the more “discriminatory” 65 officers, or the even more “discriminatory” 16 officers) who searched black and hispanic drivers more but found less contraband? What is the graph meant to communicate, and what is the feature on the y-axis?
+
+        <br><br>Perhaps because of the unclear and inconclusive nature of these statistical insights, the DPS responded to claims of racial profiling by dismissing them as slanderous and unfounded, noting specifically the lack of “concrete evidence” in support of their rebuttal. Furthermore, after this report Steven McCraw, the director of DPS since 2009, went beyond this dismissal, going so far as to claim that the DPS has collected “compelling evidence” for 14 years proving that the DPS does not engage in racial profiling. However, an examination of the information collected by DPS in their annual reports on traffic stops shows that a claim of “compelling evidence” proving the lack of racial discrimination is a bit exaggerated. Their evidence boils down to a table of stops and searches broken down by racial group. They also provide information on the racial distribution of Texas’ population for comparison. The inference to be drawn through this comparison is that, because the racial distribution of stops and searches is similar to the racial distribution of the Texas’ population no racial discrimination exists in DPS’ stop and search practices. However, there are two large flaws to this inference. Firstly, the proper comparison for the racial distribution of stops and searches should be the racial distribution of the driving population, not the population at large. These distributions may be different, making a comparison to the latter inconclusive. Beyond this, evidence has emerged of the widespread misreporting of race by DPS officers. Many hispanic drivers, it turns out, have been misidentified in the documentation of stops and searches as white. For this reason, any statistics on the racial distribution of stops and searches by the DPS is immediately subject to speculation, rendering conclusions from these data tough to reach.
+        <br><br><h4>SEGUE TO RESEARCH QUESTION: Can we determine with more statistical
+          certainty the extent and character of racial discrimination in traffic stops
+          across the state of Texas?</h4>
+        <br><br><h3>Our Approach</h3>
+        Our team, after reviewing the literature on statistical tests for
+        determining discrimination, adopted to use four tests ranging from the simple
+        to the complex: the benchmark test, the outcome test, the threshold tests
+         and the veil of darkness test. While each of these tests has their own
+         limitations (to learn more about these tests, our methodology and our data
+         sources, click here), if there are insights that hold across the tests we can conclude
+         with a significant amount of certainty that these are likely representative of the
+         truth.
+       <br><br><h3 style='text-align: center' id='analysis'>Our Analysis</h3>
+      </div>
+    </div>
     <div class="row">
       <div class="col-xs-6 col-md-12" style="padding:0">
         <ul id='tabs' class="nav nav-tabs nav-justified">
@@ -78,11 +114,12 @@
               </div>
             </div>
             <div class='row'>
-              <div class="col-md-6 col-lg-5" style="padding:0; width:100%;">
-                Brief test description
+              <div class="col-md-6 col-lg-5" style="padding:15px; width:100%;">
+                The benchmark test compares search rates (in this case, the number of searches divided by the total number of stops for a given racial group in a given county) for various racial groups in order to conclude whether or not racial disparities exist in traffic searches. The interpretation of this test for its proponents are as follows: if the search rates for one racial group are higher than another, then that racial group is being stopped disproportionately, likely given some discriminatory practices on the part of the officer. Implicit in this interpretation is that the likelihood of containing contraband (thereby warranting a search) is equal across racial groups, which may or may not be true but is certainly hard to verify with certainty.
               </div>
-              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%">
-                Insights
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:15px; width:100%">
+                These scatterplots show the difference in search rates between white drivers and three groups of minority drivers: black drivers, hispanic drivers and asian drivers. Each point represents one county in Texas, where the size of the point is determined by the total number of searches of the minority driver being plotted (larger points = more searches). The y-axis represents the search rate for minority drivers in the county, and the x-axis represents the search rate for white drivers in the county. A 45-degree line is plotted to easily visualize all the points where the search rates of minority and white drivers are the same. If points are mostly below the 45-degree line, then white drivers are searched at higher rates than the given population of minority drivers across counties in Texas, implying discrimination against white drivers. If points are mostly above the 45-degree line, then white drivers are searched at lower rates than the given population of minority drivers across counties in Texas, implying discrimination against minority drivers. If points are mostly around the 45-degree line, than drivers of both racial groups are searched at about the same rate, implying no demonstrable racial discrimination.
+                <br><br>Black and hispanic drivers are both searched at higher rates than white drivers in the majority of counties in Texas. If one accepts the assumption that drivers of all racial groups have similar likelihoods of possessing contraband, one could conclude that hispanic and black drivers are systematically discriminated against in vehicular stops and searches in the state of Texas. Asian drivers, however, are searched at lower rates than white drivers in the majority of counties in Texas. If one accepts the aforementioned assumption, one could conclude that asian drivers are given more favorable treatment than white drivers and drivers of other minority groups in vehicular stops and searches.
               </div>
             </div>
           </div>
@@ -98,11 +135,12 @@
               </div>
             </div>
             <div class='row'>
-              <div class="col-md-6 col-lg-5" style="padding:0; width:100%;">
-                Brief test description
+              <div class="col-md-6 col-lg-5" style="padding:15px; width:100%;">
+                The outcome test compares the hit rate of searches (in this case, the number of searches resulting in the recovery of contraband divided by the total number of searches for a given racial group in a given county) for various racial groups in order to conclude whether or not racial disparities exist in traffic searches. The interpretation of this test for its proponents are as follows: if the hit rates for one racial group are lower than another, then that implies a lower risk threshold being applied to the former racial group (because more of those searches are not turning up contraband). The motivation for this lower threshold can be attributed to a racially biased mindset, and can be considered discriminatory. It should be noted, however, that this test makes some simplifying assumptions about the risk distributions for possessing contraband that call into question the certainty with which one can draw conclusions about risk thresholds.
               </div>
-              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%">
-                Insights
+              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:15px; width:100%">
+                These scatterplots show the difference in hit rates between white drivers and three groups of minority drivers: black drivers, hispanic drivers and asian drivers. Each point represents one county in Texas, where the size of the point is determined by the total number of searches of the minority driver being plotted (larger points = more searches). The y-axis represents the hit rate for minority drivers in the county, and the x-axis represents the hit rate for white drivers in the county. A 45-degree line is plotted to easily visualize all the points where the hit rates of minority and white drivers are the same. If points are mostly below the 45-degree line, one could conclude that officers across counties in Texas are conducting the search with a lower risk threshold for minority drivers, implying discriminatory treatment of minority drivers. If points are mostly above the 45-degree line, one could conclude that officers across counties in Texas are conducting the search with a higher risk threshold for minority drivers, implying discriminatory treatment of white drivers. If points are mostly around the 45-degree line, one could conclude that drivers of both racial groups are searched using the same risk risk threshold, implying no demonstrable racial discrimination.
+                <br><br>The hit rate of black and white drivers is about the same for counties across Texas, suggesting a similar risk threshold for both racial categories. Hit rates for hispanic drivers, however, are significantly lower than their white counterparts across counties in Texas. This suggests a lower risk threshold is being applied to hispanic drivers than white drivers, suggesting some discriminatory treatment in vehicular stops and searches. The hit rate for asian drivers is either zero or one in many counties. This is because of the small number of searches conducted against asian drivers in many counties in the State of Texas. Given that the sample size is so small for a significant number of counties, no conclusions about the threshold applied to asian drivers can be drawn.
               </div>
             </div>
           </div>
@@ -150,81 +188,11 @@
       </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-12" style="padding:0">
+        <h3 id='discussion'>Discussion</h3>
   </div>
 
-
-  <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Datasets</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class='datasets'>
-            <h4 id='box_top'>
-              <a id='box_top_1' class='data_list' href='https://openpolicing.stanford.edu/data/'> <div class='subhead'>Open Policing Data</div></a>
-            </h4>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="creditsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">About this project</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          TO BE WRITTEN</a>.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal show" id="useModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div style='min-width: 75%' class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 style="text-align: center" class="modal-title" id="exampleModalLongTitle">Introduction</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div>
-            <h4 id='box_top' style='text-align: center; font-weight:bold'>
-              Header
-            </h4>
-            <p>
-              Text...
-            </p>
-            <h4 style='text-align: center; font-weight:bold'>
-              Header
-            </h4>
-
-            <p>Text....
-            </p>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
