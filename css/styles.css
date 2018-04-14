@@ -3,6 +3,9 @@ body {
     margin: 0;
     background: white;
 }
+#body{
+  padding-top: 70px;
+}
 
 circle {fill:orange;stroke:orange;fill-opacity:0.5;}
 
@@ -19,7 +22,7 @@ circle {fill:orange;stroke:orange;fill-opacity:0.5;}
 }
 
 #header{
-    color: white;
+    color: black;
 }
 .legend {
     color: white;
@@ -32,4 +35,16 @@ circle {fill:orange;stroke:orange;fill-opacity:0.5;}
     width: 18px;
     margin-right: 8px;
     float: right;
+}
+
+.navbar-fixed-top {
+
+position: fixed;
+
+right: 0;
+
+left: 0;
+
+z-index: 999;
+
 }
