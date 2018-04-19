@@ -18,7 +18,7 @@
 
 <body>
   <!-- HEADER -->
-  <nav id='headerNav' class="navbar navbar-light" style="background-color: rgba(255, 190, 81, 1);">
+  <nav id='headerNav' class="navbar navbar-light navbar-fixed-top" style="background-color: rgba(255, 190, 81, 1);">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -69,19 +69,53 @@
         </ul>
         <!-- CONTENT FOR TABS -->
         <div class="tab-content">
-          <div class="tab-pane fade in show active" id="benchmark" role="tabpanel" onclick="updateMap()">
-            Overview of Method Benchmark
+          <div class="tab-pane fade in show active" id="benchmark" role="tabpanel" style="margin:10px">
+            The benchmark test is one of the simplest tests aimed at measuring bias in decision-making.
+            Essentially, it compares the rate at which white and minority groups are treated favorably.
+            In this instance, the rate being compared is the rate at which minority and white drivers
+            who are stopped by the DPS are searched for contraband. If white drivers stopped by the DPS
+            are searched less frequently than minority drivers stopped by the DPS, then one could claim that
+            the DPS' officers are discriminating against minority drivers by giving white drivers favorable treatment through more lenience
+            in their searching practices. <br><br>The primary strength and limitation of this test both come from its simplicity. Because the test
+            is quite simple, it is easy to understand: if white drivers are searched less frequently than minority drivers, it is pretty intuitive that a reason for this
+            might be an unfair degree of lenience towards white drivers. However, this test has a significant statistical limitation.
+            It may in fact be the case that drivers of different racial groups stopped by the DPS
+            could have different likelihoods of possessing contrabands, thereby justifying different search rates for racial groups.
+            While there may be strongly differing opinions as to whether or not these difference in likelihoods across racial groups
+            exist, the fact remains that it is very hard to prove either way, limiting the certainty one can ascribe this test.
+            <br><br>To read more about this test and its limitations, refer to <a href="https://5harad.com/papers/threshold-test.pdf">The Problem of Infra-marginality in Outcome Tests for Discrimination</a>,
+            a paper by Camelia Simiou, Sam Corbett-Davies and Sharad Goel, all of Stanford University.
+
           </div>
-          <div class="tab-pane" id="outcome" role="tabpanel" onclick="updateMap()">
-            Overview of Method Outcome
+          <div class="tab-pane" id="outcome" role="tabpanel" style="margin:10px">
+            The primary limitation of the benchmark test is the fact that it potentially contains some omitted variable bias: in this
+            case by not accounting for the potential of different likelihoods for possessing contraband across racial groups.
+            The outcome test attempts to address this limitation by focusing not on the favorability demonstrated by rates of certain decisions (e.g. the rate officers decide to search stopped drivers),
+            but rather on the success rate of that decision: in this case, the rate at which driver searches turn up contraband. While the rates at which drivers are searched could reasonably vary
+            across racial groups, if the decision to search was made with a similar risk threshold across racial groups then the rate at which these searches turned up contraband would be about the same.
+            If the recovery rates for these searches are higher for white drivers, then one could conclude that the risk threshold needed to search a white driver is higher than a minority driver, implying some favorable
+            treatment for white people and discrimination against minority groups.
+            <br><br>The strength of this test is that, like the benchmark test, it is also quite simple to calculate and interpret. By addressing the issue of ommitted variable bias it is also slightly more rigorous.
+            However, there is a major statistical limitation to this test related to the assumption that rates of contraband recovery can be equated to some applied risk threshold.
+            An example can demonstrate the problem with this assumption this quite well:
+            <br><br>Assume there are two groups of drivers stopped by the DPS.
+            Members of Group A either have a 1% or a 75% chance of possessing contraband, whereas members of Group B either have a 1% or a 50% chance of possessing contraband.
+            Assume also that officers can distinguish clearly between those with low risk and high risk. If officers search all drivers with at least a 10% chance of possessing contraband,
+            then the rate of contraband recovery from searches of Group A would be 75% and the rate for Group B would be 50%. Comparing these two rates,
+            one might conclude that Group B is being discriminated against, because searches against their group turn up less contraband, thereby implying a lower risk threshold.
+            However, the risk threshold in this example is the same for both groups!
+            <br><br>More generally, the problem with this test has to do with the distribution of likelihoods, in this instance the likelihood of possessing contraband for different racial groups.
+            As the example above demonstrates, these distributions of risk can exist such that the same risk threshold can be applied across racial groups but return different rates of recovery.
+            This problem is known as infra-marginality. To read more about infra-marginality and this test, refer to <a href="https://5harad.com/papers/threshold-test.pdf">The Problem of Infra-marginality in Outcome Tests for Discrimination</a>,
+            a paper by Camelia Simiou, Sam Corbett-Davies and Sharad Goel, all of Stanford University.
           </div>
-          <div class="tab-pane" id="threshold" role="tabpanel" onclick="updateMap()">
+          <div class="tab-pane" id="threshold" role="tabpanel" style="margin:10px">
             Overview of Method Threshold
           </div>
-          <div class="tab-pane" id="VoD" role="tabpanel" onclick="updateMap()">
+          <div class="tab-pane" id="VoD" role="tabpanel" style="margin:10px">
             Overview of Method VoD
           </div>
-          <div class="tab-pane" id="data" role="tabpanel" onclick="updateMap()">
+          <div class="tab-pane" id="data" role="tabpanel" style="margin:10px">
             <a class='data_list' href='https://openpolicing.stanford.edu/data/'>Open Policing Data</a>
             Description of open policing data, shapefiles, twilight hours etc
           </div>
