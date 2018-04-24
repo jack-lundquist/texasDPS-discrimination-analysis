@@ -238,7 +238,7 @@ function createChartO(error, outcomes, county){
   var gChart = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var gMap   = svg.append("g")
-                  .attr("transform", "translate(650, 0)");
+                  .attr("transform", "translate(550, 0)");
 
 
   createMap(gMap, outcomes, county);
