@@ -10,9 +10,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-  crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
   <link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 
@@ -107,11 +105,11 @@
         <div class="tab-pane fade in show active" id="benchmark" role="tabpanel" >
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
-                <div id='outcomeCharts'></div>
-              </div>
-              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
-                <div id='my-map' style='height:500px;'></div>
+              <div id="scatterplot">
+                <button id='bB'>Black</button><button id='hB'>Hispanic</button>
+                <button id='aB'>Asian</button>
+                <div id="scatterSvgB">
+                </div>
               </div>
             </div>
             <div class='row'>
@@ -131,17 +129,11 @@
           <div class="container-fluid">
             <div class="row">
               <div id="scatterplot">
-                <button id='b'>Black</button><button id='h'>Hispanic</button>
-                <button id='a'>Asian</button>
-                <div id="scatterSvg">
+                <button id='bO'>Black</button><button id='hO'>Hispanic</button>
+                <button id='aO'>Asian</button>
+                <div id="scatterSvgO">
                 </div>
               </div>
-              <!-- <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
-                <div id='outcomeCharts'></div>
-              </div>
-              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
-                <div id='my-map1' style='height:500px;'></div>
-              </div> -->
             </div>
             <div class='row'>
               <div class="col-md-6 col-lg-5" style="padding:15px; width:100%;">
@@ -159,12 +151,7 @@
         <div class="tab-pane" id="threshold" role="tabpanel" onclick="updateMap()">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
-                <div id='outcomeCharts'></div>
-              </div>
-              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
-                <div id='my-map2' style='height:500px;'></div>
-              </div>
+
             </div>
             <div class='row'>
               <div class="col-md-6 col-lg-5" style="padding:15px; width:100%;">
@@ -191,7 +178,12 @@
             <div class='row'>
               <div class="col-md-6 col-lg-5" style="padding:15px; width:100%;">
                 <h5>Overview: Veil of Darkness Test</h5>
-                Brief test description
+                Veil of Darkness is a test designed to specifically detect racial discrimination in traffic stops. It is based on the assumption that there is discrimination if rates at which drivers are stopped would vary depending on the visibility of their race. More specifically, as daylight’s effects on the visibility of a driver’s race varies throughout the day, the drivers being discriminated against would be stopped less during hours which their races are less visible. This test has a few advantages compared to the traditional benchmarking test and outcome tests. One it is quite a simple test. It also circumvents the problem of infra-marginality (HOW?).
+
+                <br><br>To further control for differences in travel patterns at different hours of the day, the test is implemented specifically in the inter twilight period, which can have daylight or not depending planetary rotation.
+
+                <br><br>Veil of darkness also has some weaknesses. The visibility of drivers races is technically an unobservable variable, so a binary daylight variable serves as the indicator for visibility. This assumption (that visibility of race is less or none during the night-time) can be challenged in some circumstances. For example, it can be easily imagined that some well-lit highway will have decent visibility for driver’s race even during the normal dark hours.
+
               </div>
               <div class="col-xs-6 col-md-6 col-lg-7" style="padding:15px; width:100%">
                 <h5>Results</h5>
