@@ -83,6 +83,12 @@
             could have different likelihoods of possessing contrabands, thereby justifying different search rates for racial groups.
             While there may be strongly differing opinions as to whether or not these difference in likelihoods across racial groups
             exist, the fact remains that it is very hard to prove either way, limiting the certainty one can ascribe this test.
+            A refinement to this method is to use a regression based on this benchmark statistic that controls for the demographic composition
+            and crime rate of certain areas. This was done in an <a href='http://www.stat.columbia.edu/~gelman/research/published/frisk9.pdf'>analysis of New York's Stop and Frisk policy by Columbia statisticians Andrew Gelman, Jeffrey Fagan and Alex Kiss.</a>
+            This method has been used with some effectiveness in a court of law to demonstrate the presence of racial profiling in policing practices: <a href='https://www.newyorker.com/news/john-cassidy/the-statistical-debate-behind-the-stop-and-frisk-verdict'>this New Yorker
+            article presents an interesting look at how this statistical method (among others) was interpreted in a court of law.</a>
+            So while this refined version of the benchmark test does have some legal precedent suggesting it is effective at determining the presence of racial profiling in policing practices, it still does not address the underlying assumption that rates across racial groups should be equal,
+            not accounting for the possibility of different risk likelihoods for different racial groups.
             <br><br>To read more about this test and its limitations, refer to <a href="https://5harad.com/papers/threshold-test.pdf">The Problem of Infra-marginality in Outcome Tests for Discrimination</a>,
             a paper by Camelia Simiou, Sam Corbett-Davies and Sharad Goel, all of Stanford University.
 
@@ -104,7 +110,7 @@
             then the rate of contraband recovery from searches of Group A would be 75% and the rate for Group B would be 50%. Comparing these two rates,
             one might conclude that Group B is being discriminated against, because searches against their group turn up less contraband, thereby implying a lower risk threshold.
             However, the risk threshold in this example is the same for both groups!
-            <br><br>More generally, the problem with this test has to do with the distribution of likelihoods, in this instance the likelihood of possessing contraband for different racial groups.
+            <br><br>More generally, the problem with this test has to do with the distribution of likelihoods: in this instance, the likelihood of possessing contraband for different racial groups.
             As the example above demonstrates, these distributions of risk can exist such that the same risk threshold can be applied across racial groups but return different rates of recovery.
             This problem is known as infra-marginality. To read more about infra-marginality and this test, refer to <a href="https://5harad.com/papers/threshold-test.pdf">The Problem of Infra-marginality in Outcome Tests for Discrimination</a>,
             a paper by Camelia Simiou, Sam Corbett-Davies and Sharad Goel, all of Stanford University.
@@ -116,8 +122,11 @@
             For the implementation for this website, the veil darkness is followed in general manner. First, the dataset for all Texas stops collected and cleaned by the Stanford Open Policing Project is used. Then the data without both the latitude and longitude attributes are left out from the dataset. A date time variable with the minute to which the stop occurred then is created from the date and stop time in the record. The metric for evaluating the biases is by looking at the ratio of driver races in stops before and after end of civil twilight (the sun is six degrees below the horizon). To get the end of civil twilight time for each day that had at least one stop. A popular python package PyEphem for nautical and astronomy was used. The PyEphem can take a date as an input and output the end of civil twilight time for a particular longitude and latitude combination. The average of latitudes and longitudes of all stops within each county. Then, this coordinate is used for all stops for that particular county.  The total stops for each race before darkness is divided by the total stops all races before darkness, Rb. the total stops for each race after darkness is divided by the total stops all races after darkness, Ra.
           </div>
           <div class="tab-pane" id="data" role="tabpanel" style="margin:10px">
-            <a class='data_list' href='https://openpolicing.stanford.edu/data/'>Open Policing Data</a>
-            Description of open policing data, shapefiles, twilight hours etc
+            <li><a class='data_list' href='https://openpolicing.stanford.edu/data/'>Stanford Open Policing Data</a></li>
+            <li><a class='data_list' href='http://gis-txdot.opendata.arcgis.com/datasets/9b2eb7d232584572ad53bad41c76b04d_0?geometry=-121.171%2C25.526%2C-78.983%2C36.777'>Shapefile of Counties in Texas</a></li>
+            <li><a class='data_list' href='http://rhodesmill.org/pyephem/'>PyEphem</a>, the package used to determine civil twilight times for the Veil of Darkness Test</li>
+            <li><a class='data_list' href='https://pystan.readthedocs.io/en/latest/'>Pystan</a> and <a class='data_list' href='http://mc-stan.org/users/interfaces/rstan'> RStan</a>, packages implementing Stan, the statistical inference program used for the threshold test</li>
+            <li><a class='data_list' href='https://github.com/jkastelan/DAA2018_jlk635'>Our github page</a>, where most of the code used in this project can be found.</li>
           </div>
         </div>
       </div>

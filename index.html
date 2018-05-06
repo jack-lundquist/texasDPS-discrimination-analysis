@@ -69,8 +69,8 @@
         <br><br>Perhaps because of the unclear and inconclusive nature of these statistical insights, the DPS responded to claims of racial profiling by dismissing them as slanderous and unfounded, noting specifically the lack of “concrete evidence” in support of their rebuttal. Furthermore, after this report Steven McCraw, the director of DPS since 2009, went beyond this dismissal, going so far as to claim that the DPS has collected “compelling evidence” for 14 years proving that the DPS does not engage in racial profiling. However, an examination of the information collected by DPS in their annual reports on traffic stops shows that a claim of “compelling evidence” proving the lack of racial discrimination is a bit exaggerated. Their evidence boils down to a table of stops and searches broken down by racial group. They also provide information on the racial distribution of Texas’ population for comparison. The inference to be drawn through this comparison is that, because the racial distribution of stops and searches is similar to the racial distribution of the Texas’ population no racial discrimination exists in DPS’ stop and search practices. However, there are two large flaws to this inference. Firstly, the proper comparison for the racial distribution of stops and searches should be the racial distribution of the driving population, not the population at large. These distributions may be different, making a comparison to the latter inconclusive. Beyond this, evidence has emerged of the widespread misreporting of race by DPS officers. Many hispanic drivers, it turns out, have been misidentified in the documentation of stops and searches as white. For this reason, any statistics on the racial distribution of stops and searches by the DPS is immediately subject to speculation, rendering conclusions from these data tough to reach.
         <br><br>All of this confusing and inconclusive evidence begs the question: <strong>can the extent and character of racial discrimination in traffic stops
           across the state of Texas be determined with more statistical certainty?</strong> Using data on DPS traffic stops (2006-2015) collected by the <a href='https://openpolicing.stanford.edu/'>Stanford Open Policing Project</a>,
-        our team conducted four statistical tests in an attempt to answer this question. While the results of each test are subject to a fair amount of criticism (as will be discussed in more detail below), findings that are consistent across tests
-        provide the strongest statistical proof brought forth to this day that the DPS engages in racially discriminatory practices in their vehicular stops and searches.
+        our team conducted four statistical tests in an attempt to answer this question. While the results of each test are subject to a fair amount of criticism (as will be discussed in more detail below), our analysis shows
+        a strong statistical likelihood that the DPS discriminates against Texas' Hispanic population: the strongest statistical proof brought forth to this day that the DPS engages in racially discriminatory practices in their vehicular stops and searches.
 
         <br><br><h3>Our Approach</h3>
         Our team, after reviewing the literature on statistical tests for
@@ -78,9 +78,9 @@
         to the complex: the benchmark test, the outcome test, the threshold test
          and the veil of darkness test. While each of these tests has their own
          limitations (to learn more about these tests, our methodology and our data
-         sources, click here), if there are insights that hold across the tests we can conclude
-         with a significant amount of certainty that these are likely representative of the
-         truth.
+         sources, <a href='methods.html'>click here</a>), conclusions that hold across these tests are
+           most likely, statistically speaking, to represent the true extent and character of racial profiling in
+          vehicular stops and searches conducted by the DPS.
        <br><br><h3 style='text-align: center' id='analysis'>Our Analysis</h3>
       </div>
     </div>
@@ -151,7 +151,12 @@
         <div class="tab-pane" id="threshold" role="tabpanel" onclick="updateMap()">
           <div class="container-fluid">
             <div class="row">
-
+              <div id="scatterplot">
+                <button id='bT'>Black</button><button id='hT'>Hispanic</button>
+                <button id='aT'>Asian</button>
+                <div id="scatterSvgT">
+                </div>
+              </div>
             </div>
             <div class='row'>
               <div class="col-md-6 col-lg-5" style="padding:15px; width:100%;">
@@ -168,11 +173,11 @@
         <div class="tab-pane" id="VoD" role="tabpanel" onclick="updateMap()">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-6 col-lg-5" style="padding:0; width:100%; height: 500px;">
-                <div id='outcomeCharts'></div>
-              </div>
-              <div class="col-xs-6 col-md-6 col-lg-7" style="padding:0; width:100%; height: 500px;">
-                <div id='my-map3' style='height:500px;'></div>
+              <div id="scatterplot">
+                <button id='bV'>Black</button><button id='hV'>Hispanic</button>
+                <button id='aV'>Asian</button><button id='wV'>White</button>
+                <div id="scatterSvgV">
+                </div>
               </div>
             </div>
             <div class='row'>
@@ -200,7 +205,6 @@
         <h3 id='discussion'>Discussion</h3>
   </div>
 
-
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -210,7 +214,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <script src="js/d3.js"></script>
-  <script src="js/scripts.js"></script>
+  <!-- <script src="js/scripts.js"></script> -->
 </body>
 
 </html>
