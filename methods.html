@@ -14,6 +14,13 @@
   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
   crossorigin=""/>
   <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -116,17 +123,36 @@
             a paper by Camelia Simiou, Sam Corbett-Davies and Sharad Goel, all of Stanford University.
           </div>
           <div class="tab-pane" id="threshold" role="tabpanel" style="margin:10px">
-            Overview of Method Threshold
+            The threshold test aims to overcome the problem of infra-marginality associated with other tests such as the benchmark test.
+            <br><br>As previously mentioned, the problem of inframarginality relates to differing risk distributions or likelihoods that a suspect is carrying contraband, and search threshold of suspects.
+            <br><br>Consider the following two scenarios which both show figurative distributions for red and blue populations, marked by the solid line distributions.
+            <div><img src='data/thresholdDistCharts.png' class="Chart" alt="ThresholdDistributions" style="vertical-align:top;display:block;margin-top:-150px;margin-bottom:-150px;"></div>
+            <br>Each distribution can be viewed as an assessment made by the officer on the stopped individual's likelihood of carrying contraband. Think of it as once the officer has made the stop; they are assessing available information such as time of day; vehicle make; location of stop; driver age, race and sex; signs of nervousness along with others to assign a single number to that individual / stop representing the likelihood that individual is carrying contraband (e.g. weapons and/or drugs). If this single number (%) is above a particular threshold; the officer will conduct a search. i.e. the officers search everyone who has a likelihood of possessing contraband greater than the search threshold.
+            <br><br>The thresholds are marked by the dotted vertical lines for each of the respective distributions. In each case, the search rate would be computed as the area under the curve; and to the right of the threshold. It is the proportion of total stops who are searched.
+            <br><br>Comparing Examples (a) and (b), it is evident the variability in likelihood a suspect is carrying contraband for the blue population is a lot more dispersed in Example (b) relative to the red population; whereas for Example (a), the red and blue population show similar distributions of likelihood that either are carrying contraband. In Example (a) above, the threshold for the red population is 30%, compared with a higher threshold of 35% for the blue population. For Example (b), again the red threshold if 30%; however the blue threshold is lower at 25%.
+            <br><br>The hit rate is calculated as the mean of the Bayesian conditional risk distribution of likelihood a suspect is carrying contraband given the subject is searched (i.e. given the original likelihood was above the threshold). In practical terms, you can rescale the distribution to the right of the threshold by dividing by (1- search rate); and calculate the mean of the rescaled conditional distribution.
+            <br><br>For both examples above:
+            <li>Red drivers are searched more often than blue drivers (71% vs. 64%), and</li>
+            <li>Searches of red drivers recover contraband less often than searches of blue drivers (39% vs. 44%)</li>
+            The takeaway here is there are many different combinations of risk distributions and thresholds which stem from the same search rate (Si / total stops) and hit rate (Hi / Si), where Si = number of searches of race i; and Hi = number of stops resulting in contraband recovery (hits) from race i.
+            <br><br>The following steps provide technical detail on how the threshold test was fitted for this analysis. The focus of our analysis Texas traffic stops between 2006-2015:
+            <ol>
+              <li>The analysis was restricted to the 100 largest counties (by total number of stops) in Texas. This is to mitigate the challenge resulting from fitting Bayesian models to groups with small sample sizes.</li>
+              <li>For each race and every department the search rate Srd and hit rate Hrd were calculated.</li>
+              <li>The risk distributions for likelihood a particular race in a particular county (department) is carrying contraband is assumed to follow a Beta distribution and can be uniquely specified using two parameters 𝜆rd and 𝜙rd. There is a lot more detail on this approach in  The Problem of Infra-marginality in Outcome Tests for Discrimination paper. One of the assumptions I will mention which is one of the more subjective assumptions in applying this test is the the parameterization of these Beta distributions. It is assumed that 𝜆rd = g(𝜆r, 𝜆d) and 𝜙rd = h(𝜙r, 𝜙d) where 𝜆r, 𝜙r and  𝜙d, 𝜆d are parameters dependent on race only; and department (county) only without an interaction term. This assumption needs further exploration to validate if suitable for the populations we are looking at.</li>
+              <li>A Bayesian model fitting approach (using Rstan) was applied to estimate risk distributions and race specific thresholds by department (county) using the observed Srd and Hrd estimates.</li>
+              <li>The model fit outputs and estimated race specific thresholds were reported.</li>
+            </ol>
           </div>
           <div class="tab-pane" id="VoD" role="tabpanel" style="margin:10px">
-            For the implementation for this website, the veil darkness is followed in general manner. First, the dataset for all Texas stops collected and cleaned by the Stanford Open Policing Project is used. Then the data without both the latitude and longitude attributes are left out from the dataset. A date time variable with the minute to which the stop occurred then is created from the date and stop time in the record. The metric for evaluating the biases is by looking at the ratio of driver races in stops before and after end of civil twilight (the sun is six degrees below the horizon). To get the end of civil twilight time for each day that had at least one stop. A popular python package PyEphem for nautical and astronomy was used. The PyEphem can take a date as an input and output the end of civil twilight time for a particular longitude and latitude combination. The average of latitudes and longitudes of all stops within each county. Then, this coordinate is used for all stops for that particular county.  The total stops for each race before darkness is divided by the total stops all races before darkness, Rb. the total stops for each race after darkness is divided by the total stops all races after darkness, Ra.
+            For the implementation for this website, the veil darkness is followed in general manner. First, the dataset for all Texas stops collected and cleaned by the Stanford Open Policing Project is used. Then the data without both the latitude and longitude attributes are left out from the dataset. A date time variable with the minute to which the stop occurred then is created from the date and stop time in the record. The metric for evaluating the biases is by looking at the ratio of driver races in stops before and after end of civil twilight (the sun is six degrees below the horizon). To get the end of civil twilight time for each day that had at least one stop. A popular python package PyEphem for nautical and astronomy was used. The PyEphem can take a date as an input and output the end of civil twilight time for a particular longitude and latitude combination. The average of latitudes and longitudes of all stops within each county. Then, this coordinate is used for all stops for that particular county. The total stops for each race before darkness is divided by the total stops all races before darkness, Rb. the total stops for each race after darkness is divided by the total stops all races after darkness, Ra.
           </div>
           <div class="tab-pane" id="data" role="tabpanel" style="margin:10px">
             <li><a class='data_list' href='https://openpolicing.stanford.edu/data/'>Stanford Open Policing Data</a></li>
             <li><a class='data_list' href='http://gis-txdot.opendata.arcgis.com/datasets/9b2eb7d232584572ad53bad41c76b04d_0?geometry=-121.171%2C25.526%2C-78.983%2C36.777'>Shapefile of Counties in Texas</a></li>
             <li><a class='data_list' href='http://rhodesmill.org/pyephem/'>PyEphem</a>, the package used to determine civil twilight times for the Veil of Darkness Test</li>
             <li><a class='data_list' href='https://pystan.readthedocs.io/en/latest/'>Pystan</a> and <a class='data_list' href='http://mc-stan.org/users/interfaces/rstan'> RStan</a>, packages implementing Stan, the statistical inference program used for the threshold test</li>
-            <li><a class='data_list' href='https://github.com/jkastelan/DAA2018_jlk635'>Our github page</a>, where most of the code used in this project can be found.</li>
+            <li><a class='data_list' href='https://github.com/fairTrafficStopsTexas/methods_data/'>Our github page</a>, where most of the code used in this project can be found.</li>
           </div>
         </div>
       </div>

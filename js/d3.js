@@ -122,7 +122,7 @@ var Text = g.append('text')
   .attr("x", 200)
   .attr('y', 550)
   .attr('font-weight', 'bold')
-  .text("White Benchmark")
+  .text("White Search Rate")
 //  console.log(byCuisine)
    g.exit().style("opacity", 0)
 //  console.log(d => )
@@ -133,7 +133,7 @@ var Text = g.append('text')
   .attr('y', -25)
   .attr('font-weight', 'bold')
   .attr('transform', 'rotate(-90)')
-  .text("Minority Benchmark")
+  .text("Minority Search Rate")
 //  console.log(byCuisine)
    g.exit().style("opacity", 0)
 //  console.log(d => )
@@ -352,13 +352,15 @@ var Text = g.append('text')
       var data     = benchmark.map(d => [d.Black, d.Hispanic, d.Asian, d.White, d.index]),
       maxCount = d3.max(data, d => d[i]-d[3]),
       minCount = d3.min(data, d => d[i]-d[3]),
-      steps    = 6,
-      color    = d3.scaleThreshold()
-                   .domain(d3.range(minCount, maxCount, (maxCount - minCount)/steps))
-                   .range(d3.schemeRdBu[steps]);
-var x = d3.scaleLinear()
-          .domain([minCount, maxCount])
-      .rangeRound([-100,203]);
+      meanCount = d3.mean(data, d => d[i]-d[3]),
+      devCount = d3.deviation(data, d => d[i]-d[3]),
+//       steps    = 3,
+      color = d3.scaleQuantile()
+  .domain([-5, -2 * devCount ,2 * devCount, 5])
+  .range(['DarkTurquoise', 'LightGrey', 'IndianRed' ]);
+
+var x = d3.scaleQuantile()
+          .domain(([-5, -2 * devCount , 2 * devCount  ,5])).range([-100, -40 , 40 , 100]);
 
 //       var x = d3.scaleQuantile().domain([minCount, meanCount - (2 * devCount), meanCount, meanCount + (2 * devCount), maxCount].range(['orange', 'white','blue']))
 
@@ -401,9 +403,10 @@ var x = d3.scaleLinear()
 
   // Update the tick values
   legend.call(d3.axisBottom(x)
-      .ticks(steps, "i")
+//       .ticks(4)
       .tickSize(10,0)
-      .tickValues(color.domain()))
+      .tickValues([-5, -2* devCount, 2* devCount, 5 ])
+      .tickFormat(d3.format(".2f")))
       .select(".domain")
       .remove();
 
@@ -541,7 +544,7 @@ var Text = g.append('text')
   .attr("x", 200)
   .attr('y', 550)
   .attr('font-weight', 'bold')
-  .text("White Outcome Results")
+  .text("White Hit Rate")
 //  console.log(byCuisine)
    g.exit().style("opacity", 0)
 //  console.log(d => )
@@ -552,7 +555,7 @@ var Text = g.append('text')
   .attr('y', -25)
   .attr('font-weight', 'bold')
   .attr('transform', 'rotate(-90)')
-  .text("Minority Outcome Results")
+  .text("Minority Hit Rate")
 
    g.exit().style("opacity", 0)
 //  console.log(d => )
@@ -771,13 +774,18 @@ var Text = g.append('text')
       var data     = outcome.map(d => [d.Black, d.Hispanic, d.Asian, d.White, d.index]),
       maxCount = d3.max(data, d => d[i]-d[3]),
       minCount = d3.min(data, d => d[i]-d[3]),
-      steps    = 6,
-      color    = d3.scaleThreshold()
-                   .domain(d3.range(minCount, maxCount, (maxCount - minCount)/steps))
-                   .range(d3.schemeRdBu[steps]);
-var x = d3.scaleLinear()
-          .domain([minCount, maxCount])
-      .rangeRound([-100,203]);
+      meanCount = d3.mean(data, d => d[i]-d[3]),
+      devCount = d3.deviation(data, d => d[i]-d[3]),
+//       steps    = 3,
+      color = d3.scaleQuantile()
+  .domain([-5, -2 * devCount ,2 * devCount, 5])
+  .range(['IndianRed', 'LightGrey', 'DarkTurquoise' ]);
+
+  var x = d3.scaleQuantile()
+          .domain(([-5, -2 , 2   ,5])).range([-100, -40 , 40 , 100]);
+// var x = d3.scaleLinear()
+//           .domain([minCount, maxCount])
+//       .rangeRound([-100,203]);
 
 //       var x = d3.scaleQuantile().domain([minCount, meanCount - (2 * devCount), meanCount, meanCount + (2 * devCount), maxCount].range(['orange', 'white','blue']))
 
@@ -820,9 +828,10 @@ var x = d3.scaleLinear()
 
   // Update the tick values
   legend.call(d3.axisBottom(x)
-      .ticks(steps, "i")
+//       .ticks(4)
       .tickSize(10,0)
-      .tickValues(color.domain()))
+      .tickValues([-5, -2* devCount, 2* devCount, 5 ])
+      .tickFormat(d3.format(".2f")))
       .select(".domain")
       .remove();
 
@@ -953,7 +962,7 @@ var Text = g.append('text')
   .attr("x", 200)
   .attr('y', 550)
   .attr('font-weight', 'bold')
-  .text("White Threshold")
+  .text("White Search Threshold")
 //  console.log(byCuisine)
    g.exit().style("opacity", 0)
 //  console.log(d => )
@@ -964,7 +973,7 @@ var Text = g.append('text')
   .attr('y', -25)
   .attr('font-weight', 'bold')
   .attr('transform', 'rotate(-90)')
-  .text("Minority Threshold")
+  .text("Minority Search Threshold")
 //  console.log(byCuisine)
    g.exit().style("opacity", 0)
 //  console.log(d => )
@@ -1193,14 +1202,15 @@ var Text = g.append('text')
       minCount = d3.min(data, d => (d[i]-d[3])),
 //       meanCount = d3.mean(data, d => (d[i]-d[3])),
 //       devCount = d3.deviation(data, d => (d[i]-d[3])),
-      steps    = 6,
-      color    = d3.scaleThreshold()
-                   .domain(d3.range(minCount, maxCount, (maxCount-minCount)/steps))
-                   .range(d3.schemeRdBu[steps]);
-      console.log(maxCount)
+      meanCount = d3.mean(data, d => d[i]-d[3]),
+      devCount = d3.deviation(data, d => d[i]-d[3]),
+//       steps    = 3,
+      color = d3.scaleQuantile()
+  .domain([-5, -2 * devCount ,2 * devCount, 5])
+  .range(['IndianRed', 'LightGrey', 'DarkTurquoise' ]);
 
-      var x = d3.scaleLinear()
-          .domain([minCount, maxCount]).rangeRound([-100,203]);
+  var x = d3.scaleQuantile()
+          .domain(([-5, -2 , 2   ,5])).range([-100, -40 , 40 , 100]);
 
 //       var x = d3.scaleQuantile().domain([minCount, meanCount - (2 * devCount), meanCount, meanCount + (2 * devCount), maxCount].range(['orange', 'white','blue']))
 
@@ -1242,9 +1252,10 @@ var Text = g.append('text')
 
   // Update the tick values
   legend.call(d3.axisBottom(x)
-      .ticks(steps, "i")
+//       .ticks(4)
       .tickSize(10,0)
-      .tickValues(color.domain()))
+      .tickValues([-5, -2* devCount, 2* devCount, 5 ])
+      .tickFormat(d3.format(".2f")))
       .select(".domain")
       .remove();
 
@@ -1253,7 +1264,7 @@ var Text = g.append('text')
   legend.select(".axis--map--captionT")
     .attr("x", x.range()[0])
     .attr('y', -7)
-    .text(`Difference between ${Category[i]} and White Drivers`);
+    .text(`Difference between Search Threshold ${Category[i]} and White Drivers`);
     }
 
 
@@ -1709,17 +1720,15 @@ var Text = g.append('text')
       var data     = vod.map(d => [(d.Black[0] - d.Black[1]), (d.Hispanic[0] - d.Hispanic[1]), (d.Asian[0] - d.Asian[1]), (d.White[0] - d.White[1]), d.County]),
       maxCount = d3.max(data, d => d[i]),
       minCount = d3.min(data, d => d[i]),
-//       meanCount = d3.mean(data, d => (d[i]-d[3])),
-//       devCount = d3.deviation(data, d => (d[i]-d[3])),
-      steps    = 6,
-      color    = d3.scaleThreshold()
-                   .domain(d3.range(minCount, maxCount, (maxCount-minCount)/steps))
-                   .range(d3.schemeRdBu[steps]);
+      meanCount = d3.mean(data, d => (d[i])),
+      devCount = d3.deviation(data, d => (d[i])),
+      //       steps    = 3,
+      color = d3.scaleQuantile()
+  .domain([-5, -2 * devCount ,2 * devCount, 5])
+  .range(['DarkTurquoise', 'LightGrey',  'IndianRed']);
 
-
-      var x = d3.scaleLinear()
-          .domain([minCount, maxCount])
-      .rangeRound([-100,203]);
+  var x = d3.scaleQuantile()
+          .domain(([-5, -2 , 2   ,5])).range([-100, -40 , 40 , 100]);
 
 //       var x = d3.scaleQuantile().domain([minCount, meanCount - (2 * devCount), meanCount, meanCount + (2 * devCount), maxCount].range(['orange', 'white','blue']))
 
@@ -1761,9 +1770,10 @@ var Text = g.append('text')
 
   // Update the tick values
   legend.call(d3.axisBottom(x)
-      .ticks(steps, "i")
+//       .ticks(4)
       .tickSize(10,0)
-      .tickValues(color.domain()))
+      .tickValues([-5, -2* devCount, 2* devCount, 5 ])
+      .tickFormat(d3.format(".2f")))
       .select(".domain")
       .remove();
 
@@ -1772,7 +1782,7 @@ var Text = g.append('text')
   legend.select(".axis--map--captionV")
     .attr("x", x.range()[0])
     .attr('y', -7)
-    .text(`Difference between ${Category[i]} Before and After Stops`);
+    .text(`Difference between ${Category[i]} Before and After Dark Stop Ratio`);
     }
 
 

@@ -54,10 +54,45 @@ circle {stroke:orange;fill-opacity:0.5;}
   border: 1px solid #6F257F;
   padding: 14px;
   text-align: center;
+  z-index: 999;
+  container: 'body';
+  placement: 'bottom';
 }
 
 .county {
   stroke: black;
   stroke-width: 1px;
   fill: none;
+}
+
+.Chart{
+  display: inline;
+}
+.axis--map--captionB {
+  fill: black;
+  font-family: Helvetica;
+  font-size: 12px;
+  text-anchor: start;
+  font-weight: bold;
+}
+.axis--map--captionO {
+  fill: black;
+  font-family: Helvetica;
+  font-size: 12px;
+  text-anchor: start;
+  font-weight: bold;
+}
+.axis--map--captionT {
+  fill: black;
+  font-family: Helvetica;
+  font-size: 12px;
+  text-anchor: start;
+  font-weight: bold;
+}
+.axis--map--captionV {
+  fill: black;
+  font-family: Helvetica;
+  font-size: 12px;
+  text-anchor: start;
+  font-weight: bold;
 }
