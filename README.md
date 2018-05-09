@@ -1,2 +1,2 @@
-# texasDPS-discrimination-analysis
-Web visualization tool showcasing analytic work done for the course "Data and Algorithms in the Criminal Justice System." Contributors: Prince Abunku, Te Du, Jon Kastelan, Jack Lundquist
+# Site code: "Assessing Fairness in Traffic Stops Across Texas"
+Created for the class "Data and algorithms in the criminal justice system" (CUSP Spring 2018)
